@@ -108,12 +108,12 @@ foreach ($files as $file) {
         ':author_username' => $authorUsername,
         'author@domain.com' => $authorEmail,
         ':vendor_name' => $vendorName,
-        ':vendor_slug' => $vendorSlug,
+        'vincentbean' => $vendorSlug,
         'VendorName' => $vendorNamespace,
         ':package_name' => $packageName,
-        ':package_slug' => $packageSlug,
+        'laravel-plausible' => $packageSlug,
         'Skeleton' => $className,
-        ':package_description' => $description,
+        'Laravel Plausible' => $description,
     ]);
 
     match (true) {
