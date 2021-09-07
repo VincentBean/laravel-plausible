@@ -2,6 +2,6 @@
 
 All notable changes to `laravel-plausible` will be documented in this file.
 
-## 0.0.1 - 202X-XX-XX
+## 1.0.0 - 2021-09-07
 
-- initial release
+- Initial release

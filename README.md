@@ -41,7 +41,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [:author_name](https://github.com/VincentBean)
+- [Vincent Bean](https://github.com/VincentBean)
 - [All Contributors](../../contributors)
 
 ## License
