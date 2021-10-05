@@ -31,6 +31,11 @@ Include the view in your layout
 @include('plausible::tracking')
 ```
 
+You can trigger custom events on the server
+```php
+\VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
