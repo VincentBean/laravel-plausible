@@ -40,6 +40,11 @@ Track pageviews server side using middleware
     ],
 ```
 
+You can trigger custom events on the server
+```php
+\VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

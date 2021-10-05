@@ -4,7 +4,7 @@ namespace VincentBean\LaravelPlausible;
 
 use Illuminate\Support\Facades\Http;
 
-class Event
+class PlausibleEvent
 {
     public static function fire(string $name, array $props = [], array $args = []): bool
     {
