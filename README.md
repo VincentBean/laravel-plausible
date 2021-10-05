@@ -33,6 +33,12 @@ Include the view in your layout to include the plausible script.
 @include('plausible::tracking')
 ```
 
+Plausible will be available on the window object for sending custom events via Javascript:
+
+```javascript
+plausible('event')
+```
+
 ### Server Side Tracking
 Track pageviews server side using middleware.
 
