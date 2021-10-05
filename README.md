@@ -31,6 +31,15 @@ Include the view in your layout
 @include('plausible::tracking')
 ```
 
+Track pageviews server side using middleware
+
+```php
+// app/Http/Kernel.php
+    'web' => [
+        \VincentBean\LaravelPlausible\Middleware\TrackPlausiblePageviews::class, // Add this middleware to the web group to track globally
+    ],
+```
+
 You can trigger custom events on the server
 ```php
 \VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
