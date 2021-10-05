@@ -3,8 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/vincentbean/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/vincentbean/laravel-plausible)
 [![Total Downloads](https://img.shields.io/packagist/dt/vincentbean/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/vincentbean/laravel-plausible)
 
-This package provides a blade view with the script tag for plausible.
-
+This package provides a blade view with the script tag for plausible and a wrapper to easily send custom events to Plausible.
 
 ## Installation
 
@@ -26,21 +25,27 @@ PLAUSIBLE_DOMAIN=OPTIONAL_IF_SELF_HOSTING
 ```
 
 ## Usage
-Include the view in your layout
+This package supports both client side and server side tracking.
+
+### Client Side Tracking
+Include the view in your layout to include the plausible script.
 ```php
 @include('plausible::tracking')
 ```
 
-Track pageviews server side using middleware
+### Server Side Tracking
+Track pageviews server side using middleware.
 
 ```php
 // app/Http/Kernel.php
     'web' => [
-        \VincentBean\LaravelPlausible\Middleware\TrackPlausiblePageviews::class, // Add this middleware to the web group to track globally
+        // Add this middleware to the web group to track globally
+        \VincentBean\LaravelPlausible\Middleware\TrackPlausiblePageviews::class,
     ],
 ```
 
-You can trigger custom events on the server
+### Custom Events
+You can trigger custom events on the server.
 ```php
 \VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
 ```
@@ -56,6 +61,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 ## Credits
 
 - [Vincent Bean](https://github.com/VincentBean)
+- [Quinten Buis](https://github.com/quintenbuis)
 - [All Contributors](../../contributors)
 
 ## License
