@@ -17,11 +17,17 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "guzzlehttp/guzzle": "^7.4",
         "illuminate/contracts": "^8.37"
     },
     "autoload": {
         "psr-4": {
             "VincentBean\\LaravelPlausible\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VincentBean\\LaravelPlausible\\Tests\\": "tests"
         }
     },
     "config": {
@@ -35,5 +41,8 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "orchestra/testbench": "^6.20"
+    }
 }
