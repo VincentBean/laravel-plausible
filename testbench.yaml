@@ -1,2 +1,2 @@
 providers:
-  - VincentBean\LaravelPlausible\SkeletonServiceProvider
+  - VincentBean\LaravelPlausible\LaravelPlausibleServiceProvider
