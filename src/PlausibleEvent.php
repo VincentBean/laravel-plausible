@@ -10,18 +10,17 @@ class PlausibleEvent
     {
         return Http::withHeaders([
             'X-Forwarded-For' => request()->ip(),
-            'user-agent'      => request()->userAgent(),
+            'user-agent' => request()->userAgent(),
         ])
             ->post(
                 config('laravel-plausible.plausible_domain').'/api/event',
                 array_merge($args, [
-                    'name'   => $name,
+                    'name' => $name,
                     'domain' => config('laravel-plausible.tracking_domain'),
-                    'url'    => $args['url'] ?? url()->current(),
-                    'props'  => json_encode($props),
+                    'url' => $args['url'] ?? url()->current(),
+                    'props' => json_encode($props),
                 ])
             )
             ->successful();
-
     }
 }
