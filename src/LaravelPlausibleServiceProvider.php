@@ -3,8 +3,6 @@
 namespace VincentBean\LaravelPlausible;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelPlausibleServiceProvider extends ServiceProvider
 {
