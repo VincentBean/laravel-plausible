@@ -6,6 +6,11 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelPlausibleServiceProvider extends ServiceProvider
 {
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
         $this
@@ -13,11 +18,25 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
             ->bootViews();
     }
 
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/laravel-plausible.php', 'laravel-plausible'
+        );
+    }
+
     protected function bootConfig(): self
     {
-        $this->publishes([
-            __DIR__ . '/../config/laravel-plausible.php' => config_path('laravel-plausible.php'),
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/laravel-plausible.php' => config_path('laravel-plausible.php'),
+            ], 'config');
+        }
 
         return $this;
     }
