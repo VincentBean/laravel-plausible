@@ -26,7 +26,8 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/laravel-plausible.php', 'laravel-plausible'
+            __DIR__.'/../config/laravel-plausible.php',
+            'laravel-plausible'
         );
     }
 
