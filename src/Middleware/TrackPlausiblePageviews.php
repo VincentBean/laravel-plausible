@@ -10,7 +10,9 @@ class TrackPlausiblePageviews
 {
     public function handle(Request $request, Closure $next)
     {
-        PlausibleEvent::fire('pageview');
+        if (config('laravel-plausible.tracking_domain') !== null) {
+            PlausibleEvent::fire('pageview');
+        }
 
         return $next($request);
     }
