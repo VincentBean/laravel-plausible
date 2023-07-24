@@ -2,6 +2,7 @@
 
 namespace VincentBean\LaravelPlausible;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelPlausibleServiceProvider extends ServiceProvider
@@ -45,6 +46,8 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     protected function bootViews(): self
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'plausible');
+
+        Blade::componentNamespace('VincentBean\\LaravelPlausible\\Components', 'plausible');
 
         return $this;
     }

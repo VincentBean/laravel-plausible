@@ -28,9 +28,11 @@ PLAUSIBLE_DOMAIN=OPTIONAL_IF_SELF_HOSTING
 This package supports both client side and server side tracking.
 
 ### Client Side Tracking
-Include the view in your layout to include the plausible script.
+Include the component in your layout to add the plausible script, with optional tracking extensions.
 ```php
-@include('plausible::tracking')
+<x-plausible::tracking /> 
+or 
+<x-plausible::tracking extensions="hash, outbound-links, etc.." />
 ```
 
 Plausible will be available on the window object for sending custom events via Javascript:
