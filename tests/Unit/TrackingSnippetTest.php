@@ -27,8 +27,8 @@ class TrackingSnippetTest extends TestCase
         $this->blade('<x-plausible::tracking />')
             ->assertSee("<script defer data-domain=\"$tracking_domain\" src=\"$domain/js/script.js\"></script>", false);
 
-        $this->blade('<x-plausible::tracking tracking-domain="analytics.test.com" extensions="hash.outbound-links" />')
-            ->assertSee("<script defer data-domain=\"analytics.test.com\" src=\"$domain/js/script.hash.outbound-links.js\"></script>", false);
+        $this->blade('<x-plausible::tracking tracking-domain="analytics.test.com" extensions="hash,outbound-links, revenue" />')
+            ->assertSee("<script defer data-domain=\"analytics.test.com\" src=\"$domain/js/script.hash.outbound-links.revenue.js\"></script>", false);
 
         $this->blade('<x-plausible::tracking data-domain="analytics.test.com" extensions="hash.outbound-links" />')
             ->assertSee("<script defer data-domain=\"analytics.test.com\" src=\"$domain/js/script.hash.outbound-links.js\"></script>", false);
