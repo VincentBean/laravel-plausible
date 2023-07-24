@@ -16,7 +16,7 @@ class Tracking extends Component
         $this->trackingDomain ??= config('laravel-plausible.tracking_domain');
         $this->plausibleDomain ??= config('laravel-plausible.plausible_domain');
 
-        if (!is_array($this->extensions)) {
+        if (! is_array($this->extensions)) {
             $this->extensions = array_map(
                 fn ($i) => trim($i),
                 explode(',', (string) $this->extensions)
@@ -29,7 +29,7 @@ class Tracking extends Component
             implode('.', [
                 'script',
                 ...array_filter($this->extensions),
-                'js'
+                'js',
             ]),
         ]);
     }
