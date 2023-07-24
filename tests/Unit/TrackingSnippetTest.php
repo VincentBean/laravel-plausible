@@ -15,7 +15,7 @@ class TrackingSnippetTest extends TestCase
         $domain = config('laravel-plausible.plausible_domain');
 
         $this->view('plausible::tracking')
-            ->assertSee("<script defer data-domain=\"$tracking_domain\" src=\"$domain/js/plausible.js\"></script>", false)
+            ->assertSee("<script defer data-domain=\"$tracking_domain\" src=\"$domain/js/script.js\"></script>", false)
             ->assertSee("<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>", false);
     }
 }
