@@ -61,4 +61,31 @@ class PlausibleEventTest extends TestCase
                 $request['props'] === json_encode($props);
         });
     }
+
+    public function testCustomUserFingerprint()
+    {
+        $post_url = static::PLAUSIBLE_DOMAIN . '/api/event';
+
+        Http::fake([
+            $post_url => Http::response('{}', Response::HTTP_ACCEPTED),
+        ]);
+
+        $name = $this->faker->word();
+        $props = [$this->faker->word() => $this->faker->word()];
+
+        PlausibleEvent::fire($name, $props, headers: [
+            'X-Forwarded-For' => $ipv = $this->faker->ipv4(),
+            'user-agent' => $userAgent = $this->faker->userAgent(),
+        ]);
+
+        Http::assertSent(function (Request $request) use ($post_url, $name, $props, $ipv, $userAgent) {
+            return $request->header('X-Forwarded-For')[0] === $ipv &&
+                $request->header('user-agent')[0] === $userAgent &&
+                $request->url() === $post_url &&
+                $request['name'] === $name &&
+                $request['domain'] === static::PLAUSIBLE_TRACKING_DOMAIN &&
+                $request['url'] === url()->current() &&
+                $request['props'] === json_encode($props);
+        });
+    }
 }

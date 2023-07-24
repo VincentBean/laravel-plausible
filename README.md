@@ -58,6 +58,15 @@ You can trigger custom events on the server.
 \VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
 ```
 
+If firing your event from a queued job or event listener, it might be necessary to pass on the user's `ip` and `user-agent` string which are used by Plausible to generate user session ID's.
+
+```php
+\VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands'], headers: [
+    'X-Forwarded-For' => $event->userIp, 
+    'user-agent' => $event->userAgent
+]);
+```
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
