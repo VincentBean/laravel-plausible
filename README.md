@@ -15,7 +15,7 @@ composer require vincentbean/laravel-plausible
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="VincentBean\LaravelPlausible\LaravelPlausibleServiceProvider" --tag="config"
+php artisan vendor:publish --provider="VincentBean\Plausible\LaravelPlausibleServiceProvider" --tag="config"
 ```
 
 Add the following to your env:
@@ -30,8 +30,8 @@ This package supports both client side and server side tracking.
 ### Client Side Tracking
 Include the component in your layout to add the plausible script, with optional tracking extensions.
 ```php
-<x-plausible::tracking /> 
-or 
+<x-plausible::tracking />
+or
 <x-plausible::tracking extensions="hash, outbound-links, etc.." />
 ```
 
@@ -48,21 +48,21 @@ Track pageviews server side using middleware.
 // app/Http/Kernel.php
     'web' => [
         // Add this middleware to the web group to track globally
-        \VincentBean\LaravelPlausible\Middleware\TrackPlausiblePageviews::class,
+        \VincentBean\Plausible\Middleware\TrackPlausiblePageviews::class,
     ],
 ```
 
 ### Custom Events
 You can trigger custom events on the server.
 ```php
-\VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
+\VincentBean\Plausible\Events\PlausibleEvent::fire('custom event', ['country' => 'netherlands']);
 ```
 
 If firing your event from a queued job or event listener, it might be necessary to pass on the user's `ip` and `user-agent` string which are used by Plausible to generate user session ID's.
 
 ```php
-\VincentBean\LaravelPlausible\PlausibleEvent::fire('custom event', ['country' => 'netherlands'], headers: [
-    'X-Forwarded-For' => $event->userIp, 
+\VincentBean\Plausible\Events\PlausibleEvent::fire('custom event', ['country' => 'netherlands'], headers: [
+    'X-Forwarded-For' => $event->userIp,
     'user-agent' => $event->userAgent
 ]);
 ```
@@ -78,7 +78,6 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 ## Credits
 
 - [Vincent Bean](https://github.com/VincentBean)
-- [Quinten Buis](https://github.com/quintenbuis)
 - [All Contributors](../../contributors)
 
 ## License

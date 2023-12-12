@@ -1,6 +1,6 @@
 <?php
 
-namespace VincentBean\LaravelPlausible;
+namespace VincentBean\Plausible;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -27,8 +27,8 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/laravel-plausible.php',
-            'laravel-plausible'
+            __DIR__.'/../config/plausible.php',
+            'plausible'
         );
     }
 
@@ -36,7 +36,7 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/laravel-plausible.php' => config_path('laravel-plausible.php'),
+                __DIR__.'/../config/plausible.php' => config_path('plausible.php'),
             ], 'config');
         }
 

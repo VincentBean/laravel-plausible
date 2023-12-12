@@ -1,6 +1,6 @@
 <?php
 
-namespace VincentBean\LaravelPlausible;
+namespace VincentBean\Plausible\Events;
 
 use Illuminate\Support\Facades\Http;
 
@@ -13,10 +13,10 @@ class PlausibleEvent
             'user-agent' => request()->userAgent(),
         ], $headers))
             ->post(
-                config('laravel-plausible.plausible_domain').'/api/event',
+                config('plausible.plausible_domain').'/api/event',
                 array_merge($args, [
                     'name' => $name,
-                    'domain' => config('laravel-plausible.tracking_domain'),
+                    'domain' => config('plausible.tracking_domain'),
                     'url' => $args['url'] ?? url()->current(),
                     'props' => json_encode($props),
                 ])
