@@ -1,7 +1,11 @@
 # Laravel Plausible
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vincentbean/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/vincentbean/laravel-plausible)
-[![Total Downloads](https://img.shields.io/packagist/dt/vincentbean/laravel-plausible.svg?style=flat-square)](https://packagist.org/packages/vincentbean/laravel-plausible)
+<p>
+    <a href="https://github.com/vincentbean/laravel-plausible"><img src="https://img.shields.io/github/actions/workflow/status/vincentbean/laravel-plausible/tests.yml?label=tests&style=flat-square" alt="Tests"></a>
+    <a href="https://github.com/vincentbean/laravel-plausible"><img src="https://img.shields.io/github/actions/workflow/status/vincentbean/laravel-plausible/coverage.yml?label=coverage&style=flat-square" alt="Coverage"></a>
+    <a href="https://github.com/vincentbean/laravel-plausible"><img src="https://img.shields.io/github/actions/workflow/status/vincentbean/laravel-plausible/analyse.yml?label=analysis&style=flat-square" alt="Analysis"></a>
+    <a href="https://github.com/vincentbean/laravel-plausible"><img src="https://img.shields.io/packagist/dt/vincentbean/laravel-plausible?color=blue&style=flat-square" alt="Total downloads"></a>
+</p>
 
 This package provides a blade view with the script tag for plausible and a wrapper to easily send custom events to Plausible.
 
