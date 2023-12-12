@@ -1,22 +1,21 @@
 <?php
 
-namespace VincentBean\LaravelPlausible\Tests;
+namespace VincentBean\Plausible\Tests;
 
-class TestCase extends \Orchestra\Testbench\TestCase
+use Orchestra\Testbench\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
 {
-    protected const PLAUSIBLE_TRACKING_DOMAIN = 'plausible-tracking-domain.test';
-    protected const PLAUSIBLE_DOMAIN = 'https://plausible-domain.test';
-
     protected function getPackageProviders($app): array
     {
         return [
-            'VincentBean\LaravelPlausible\LaravelPlausibleServiceProvider',
+            \VincentBean\Plausible\LaravelPlausibleServiceProvider::class,
         ];
     }
 
-    protected function defineEnvironment($app)
+    protected function defineEnvironment($app): void
     {
-        $app['config']->set('laravel-plausible.tracking_domain', static::PLAUSIBLE_TRACKING_DOMAIN);
-        $app['config']->set('laravel-plausible.plausible_domain', static::PLAUSIBLE_DOMAIN);
+        $app['config']->set('plausible.tracking_domain', 'plausible-tracking-domain.test');
+        $app['config']->set('plausible.plausible_domain', 'http://plausible-domain.test');
     }
 }

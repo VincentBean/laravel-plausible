@@ -1,16 +1,16 @@
 <?php
 
-namespace VincentBean\LaravelPlausible\Middleware;
+namespace VincentBean\Plausible\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use VincentBean\LaravelPlausible\PlausibleEvent;
+use VincentBean\Plausible\Events\PlausibleEvent;
 
 class TrackPlausiblePageviews
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
-        if (config('laravel-plausible.tracking_domain') !== null) {
+        if (config('plausible.tracking_domain') !== null) {
             PlausibleEvent::fire('pageview');
         }
 

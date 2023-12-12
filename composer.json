@@ -16,18 +16,25 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "guzzlehttp/guzzle": "^7.4",
-        "illuminate/contracts": "^8.37|^9.0|^10.0"
+        "illuminate/contracts": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.7",
+        "nunomaduro/larastan": "^2.5",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpunit/phpunit": "^10.1",
+        "orchestra/testbench": "^8.0"
     },
     "autoload": {
         "psr-4": {
-            "VincentBean\\LaravelPlausible\\": "src"
+            "VincentBean\\Plausible\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VincentBean\\LaravelPlausible\\Tests\\": "tests"
+            "VincentBean\\Plausible\\Tests\\": "tests"
         }
     },
     "config": {
@@ -36,14 +43,21 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VincentBean\\LaravelPlausible\\LaravelPlausibleServiceProvider"
+                "VincentBean\\Plausible\\LaravelPlausibleServiceProvider"
             ]
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "orchestra/testbench": "^6.20|^7.0|^8.0"
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan",
+        "style": "pint --test",
+        "quality": [
+            "@test",
+            "@analyse",
+            "@style"
+        ],
+        "fix-style": "pint"
     }
 }

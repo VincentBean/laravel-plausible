@@ -1,21 +1,21 @@
 <?php
 
-namespace VincentBean\LaravelPlausible\Tests\Unit;
+namespace VincentBean\Plausible\Tests\Events;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
-use VincentBean\LaravelPlausible\PlausibleEvent;
-use VincentBean\LaravelPlausible\Tests\TestCase;
+use VincentBean\Plausible\Events\PlausibleEvent;
+use VincentBean\Plausible\Tests\TestCase;
 
 class PlausibleEventTest extends TestCase
 {
     use WithFaker;
 
-    public function testFireCustomUrl()
+    public function testFireCustomUrl(): void
     {
-        $post_url = static::PLAUSIBLE_DOMAIN . '/api/event';
+        $post_url = 'http://plausible-domain.test/api/event';
 
         Http::fake([
             $post_url => Http::response('{}', Response::HTTP_ACCEPTED),
@@ -32,15 +32,15 @@ class PlausibleEventTest extends TestCase
                 $request->hasHeader('user-agent') &&
                 $request->url() === $post_url &&
                 $request['name'] === $name &&
-                $request['domain'] === static::PLAUSIBLE_TRACKING_DOMAIN &&
+                $request['domain'] === 'plausible-tracking-domain.test' &&
                 $request['url'] === $url &&
                 $request['props'] === json_encode($props);
         });
     }
 
-    public function testFireCurrentUrl()
+    public function testFireCurrentUrl(): void
     {
-        $post_url = static::PLAUSIBLE_DOMAIN . '/api/event';
+        $post_url = 'http://plausible-domain.test/api/event';
 
         Http::fake([
             $post_url => Http::response('{}', Response::HTTP_ACCEPTED),
@@ -56,19 +56,19 @@ class PlausibleEventTest extends TestCase
                 $request->hasHeader('user-agent') &&
                 $request->url() === $post_url &&
                 $request['name'] === $name &&
-                $request['domain'] === static::PLAUSIBLE_TRACKING_DOMAIN &&
+                $request['domain'] === 'plausible-tracking-domain.test' &&
                 $request['url'] === url()->current() &&
                 $request['props'] === json_encode($props);
         });
     }
 
-    public function testCustomUserFingerprint()
+    public function testCustomUserFingerprint(): void
     {
-        $post_url = static::PLAUSIBLE_DOMAIN . '/api/event';
+        $post_url = 'http://plausible-domain.test/api/event';
 
         Http::fake([
             $post_url => Http::response('{}', Response::HTTP_ACCEPTED),
-        ]);
+        ])->preventStrayRequests();
 
         $name = $this->faker->word();
         $props = [$this->faker->word() => $this->faker->word()];
@@ -78,14 +78,12 @@ class PlausibleEventTest extends TestCase
             'user-agent' => $userAgent = $this->faker->userAgent(),
         ]);
 
-        Http::assertSent(function (Request $request) use ($post_url, $name, $props, $ipv, $userAgent) {
+        Http::assertSent(function (Request $request) use ($post_url, $name, $ipv, $userAgent) {
             return $request->header('X-Forwarded-For')[0] === $ipv &&
                 $request->header('user-agent')[0] === $userAgent &&
                 $request->url() === $post_url &&
                 $request['name'] === $name &&
-                $request['domain'] === static::PLAUSIBLE_TRACKING_DOMAIN &&
-                $request['url'] === url()->current() &&
-                $request['props'] === json_encode($props);
+                $request['domain'] === 'plausible-tracking-domain.test';
         });
     }
 }

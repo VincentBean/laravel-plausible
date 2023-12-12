@@ -1,7 +1,8 @@
 <?php
 
-namespace VincentBean\LaravelPlausible\Components;
+namespace VincentBean\Plausible\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Tracking extends Component
@@ -13,8 +14,8 @@ class Tracking extends Component
         public ?string $plausibleDomain = null,
         public array|string|null $extensions = null
     ) {
-        $this->trackingDomain ??= config('laravel-plausible.tracking_domain');
-        $this->plausibleDomain ??= config('laravel-plausible.plausible_domain');
+        $this->trackingDomain ??= config('plausible.tracking_domain');
+        $this->plausibleDomain ??= config('plausible.plausible_domain');
 
         if (! is_array($this->extensions)) {
             $this->extensions = array_map(
@@ -34,8 +35,13 @@ class Tracking extends Component
         ]);
     }
 
-    public function render()
+    public function render(): View
     {
-        return view('plausible::components.tracking');
+        return view('plausible::components.tracking', [
+            'trackingDomain' => $this->trackingDomain,
+            'plausibleDomain' => $this->plausibleDomain,
+            'extensions' => $this->extensions,
+            'src' => $this->src,
+        ]);
     }
 }
