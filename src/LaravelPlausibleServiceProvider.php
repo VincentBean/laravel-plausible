@@ -47,7 +47,7 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'plausible');
 
-        Blade::componentNamespace('VincentBean\\LaravelPlausible\\Components', 'plausible');
+        Blade::componentNamespace('VincentBean\\Plausible\\Components', 'plausible');
 
         return $this;
     }
