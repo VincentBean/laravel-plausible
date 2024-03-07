@@ -4,7 +4,7 @@ namespace VincentBean\Plausible\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use VincentBean\Plausible\Events\PlausibleEvent;
+use VincentBean\Plausible\Facades\PlausibleEvent;
 
 class TrackPlausiblePageviews
 {

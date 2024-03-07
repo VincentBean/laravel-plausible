@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class PlausibleEvent
 {
-    public static function fire(string $name, array $props = [], array $args = [], array $headers = []): bool
+    public function fire(string $name, array $props = [], array $args = [], array $headers = []): bool
     {
         return Http::withHeaders(array_merge([
             'X-Forwarded-For' => request()->ip(),
