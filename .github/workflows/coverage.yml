@@ -32,7 +32,6 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  composer config allow-plugins.pestphp/pest-plugin true
                   composer require "illuminate/contracts:${{ matrix.laravel }}" --no-interaction --no-update
                   composer update --${{ matrix.stability }} --prefer-dist --no-interaction
             - name: Execute tests
