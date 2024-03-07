@@ -18,6 +18,7 @@ class PlausibleEvent
                     'name' => $name,
                     'domain' => config('plausible.tracking_domain'),
                     'url' => $args['url'] ?? url()->current(),
+                    'referrer' => request()->header('Referer'),
                     'props' => json_encode($props),
                 ])
             )
