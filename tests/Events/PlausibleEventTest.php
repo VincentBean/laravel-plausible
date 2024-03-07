@@ -76,6 +76,7 @@ class PlausibleEventTest extends TestCase
         PlausibleEvent::fire($name, $props, headers: [
             'X-Forwarded-For' => $ipv = $this->faker->ipv4(),
             'user-agent' => $userAgent = $this->faker->userAgent(),
+            'Referrer' => 'http://localhost',
         ]);
 
         Http::assertSent(function (Request $request) use ($post_url, $name, $ipv, $userAgent) {
@@ -83,7 +84,8 @@ class PlausibleEventTest extends TestCase
                 $request->header('user-agent')[0] === $userAgent &&
                 $request->url() === $post_url &&
                 $request['name'] === $name &&
-                $request['domain'] === 'plausible-tracking-domain.test';
+                $request['domain'] === 'plausible-tracking-domain.test' &&
+                $request['referrer'] === 'http://localhost';
         });
     }
 }
