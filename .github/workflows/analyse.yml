@@ -1,6 +1,10 @@
 name: analyse
 
-on: ['push', 'pull_request']
+on:
+    push:
+        branches: [main]
+    pull_request:
+        types: [opened, synchronize, reopened]
 
 jobs:
     test:
@@ -9,18 +13,15 @@ jobs:
             fail-fast: true
             matrix:
                 os: [ubuntu-latest]
-                php: [8.2]
-                laravel: [10.*]
+                php: [8.2, 8.3]
+                laravel: ['10.*', '11.*']
                 stability: [prefer-stable]
-                include:
-                    - laravel: 10.*
-                      testbench: 8.*
 
         name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -31,7 +32,7 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+                  composer require "illuminate/contracts:${{ matrix.laravel }}" --no-interaction --no-update
                   composer update --${{ matrix.stability }} --prefer-dist --no-interaction
             - name: Analyse
               run: composer analyse
