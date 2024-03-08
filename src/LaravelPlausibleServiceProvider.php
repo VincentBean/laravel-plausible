@@ -26,6 +26,11 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(
+            \VincentBean\Plausible\Facades\PlausibleEvent::class,
+            \VincentBean\Plausible\Events\PlausibleEvent::class
+        );
+
         $this->mergeConfigFrom(
             __DIR__.'/../config/plausible.php',
             'plausible'

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
-use VincentBean\Plausible\Events\PlausibleEvent;
+use VincentBean\Plausible\Facades\PlausibleEvent;
 use VincentBean\Plausible\Tests\TestCase;
 
 class PlausibleEventTest extends TestCase
