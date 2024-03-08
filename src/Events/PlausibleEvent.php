@@ -2,8 +2,8 @@
 
 namespace VincentBean\Plausible\Events;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Http;
 
 class PlausibleEvent
 {
@@ -19,7 +19,7 @@ class PlausibleEvent
                     'name' => $name,
                     'domain' => config('plausible.tracking_domain'),
                     'url' => $args['url'] ?? url()->current(),
-                    'referrer' => Arr::get($headers, 'Referrer', request()->header('Referer')),                            
+                    'referrer' => Arr::get($headers, 'Referrer', request()->header('Referer')),
                     'props' => json_encode($props),
                 ])
             )
