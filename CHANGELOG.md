@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.0.0...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.0...main)
+## [2.1.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.0) - 2024-03-08
+
+### What's Changed
+* Fix UPGRADE.md by @asbiin in https://github.com/VincentBean/laravel-plausible/pull/16
+* Add referrer by @asbiin in https://github.com/VincentBean/laravel-plausible/pull/17
+* Support Laravel 11 by @asbiin in https://github.com/VincentBean/laravel-plausible/pull/18
+
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.0.0...2.1.0
+
 ## [2.0.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.0.0) - 2023-12-12
 
 ### What's Changed
