@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.0...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.1...main)
+## [2.1.1](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.1) - 2024-03-08
+
+### What's Changed
+* Add a Facade by @asbiin in https://github.com/VincentBean/laravel-plausible/pull/19
+
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.1.0...2.1.1
+
 ## [2.1.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.0) - 2024-03-08
 
 ### What's Changed
