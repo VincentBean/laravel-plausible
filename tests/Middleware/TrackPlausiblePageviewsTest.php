@@ -3,9 +3,9 @@
 namespace VincentBean\Plausible\Tests\Unit;
 
 use Illuminate\Support\Facades\Route;
+use VincentBean\Plausible\Facades\PlausibleEvent;
 use VincentBean\Plausible\Middleware\TrackPlausiblePageviews;
 use VincentBean\Plausible\Tests\TestCase;
-use VincentBean\Plausible\Facades\PlausibleEvent;
 
 class TrackPlausiblePageviewsTest extends TestCase
 {
