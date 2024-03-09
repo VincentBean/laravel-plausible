@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.1...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.2...main)
+## [2.1.2](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.2) - 2024-03-09
+
+### What's Changed
+* Fix PlausibleEvent static method by @asbiin in https://github.com/VincentBean/laravel-plausible/pull/20
+
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.1.1...2.1.2
+
 ## [2.1.1](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.1) - 2024-03-08
 
 ### What's Changed
