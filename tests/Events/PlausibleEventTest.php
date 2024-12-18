@@ -104,6 +104,9 @@ class PlausibleEventTest extends TestCase
             $post_url => fn() => throw new \Illuminate\Http\Client\RequestException($mockResponse),
         ]);
 
+        # Spy on the log to capture any logged messages
+        \Log::spy();
+
         $name = $this->faker->word();
         $props = [$this->faker->word() => $this->faker->word()];
 
@@ -111,6 +114,13 @@ class PlausibleEventTest extends TestCase
         $result = PlausibleEvent::fire($name, $props);
 
         $this->assertFalse($result, 'The fire method should return false on exception');
+
+        # Verify that an error was logged
+        \Log::shouldHaveReceived('error')
+            ->once()
+            ->withArgs(function ($message) {
+                return str_contains($message, 'PlausibleEvent fire failed');
+            });
     }
 
 }
