@@ -4,6 +4,7 @@ namespace VincentBean\Plausible\Tests\Events;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Client\Request;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use VincentBean\Plausible\Facades\PlausibleEvent;
@@ -88,4 +89,28 @@ class PlausibleEventTest extends TestCase
                 $request['referrer'] === 'http://localhost';
         });
     }
+
+    public function testFireHandlesExceptionGracefully(): void
+    {
+        $post_url = 'http://plausible-domain.test/api/event';
+
+        # Create a mock response to pass to the RequestException
+        $mockResponse = new \Illuminate\Http\Client\Response(
+            new \GuzzleHttp\Psr7\Response(500, [], 'Simulated server error')
+        );
+
+        # Simulate a RequestException with the mock response
+        Http::fake([
+            $post_url => fn() => throw new \Illuminate\Http\Client\RequestException($mockResponse),
+        ]);
+
+        $name = $this->faker->word();
+        $props = [$this->faker->word() => $this->faker->word()];
+
+        # Ensure the fire method returns false when an exception occurs
+        $result = PlausibleEvent::fire($name, $props);
+
+        $this->assertFalse($result, 'The fire method should return false on exception');
+    }
+
 }
