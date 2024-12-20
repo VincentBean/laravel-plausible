@@ -1,6 +1,16 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.1.2...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.2.0...main)
+## [2.2.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.2.0) - 2024-12-20
+
+### What's Changed
+* Add try-catch to PlausibleEvent::fire to handle HTTP errors gracefully by @mathiaspalmqvist in https://github.com/VincentBean/laravel-plausible/pull/22
+
+### New Contributors
+* @mathiaspalmqvist made their first contribution in https://github.com/VincentBean/laravel-plausible/pull/22
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.1.2...2.2.0
+
 ## [2.1.2](https://github.com/VincentBean/laravel-plausible/releases/tag/2.1.2) - 2024-03-09
 
 ### What's Changed
