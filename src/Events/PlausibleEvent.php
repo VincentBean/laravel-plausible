@@ -28,12 +28,11 @@ class PlausibleEvent
                     ])
                 )
                 ->successful();
-        }
-        catch (\Exception $e) {
-            # Log the error for debugging purposes
+        } catch (\Exception $e) {
+            // Log the error for debugging purposes
             \Log::error('PlausibleEvent fire failed: '.$e->getMessage());
 
-            # Return false to gracefully handle the failure
+            // Return false to gracefully handle the failure
             return false;
         }
     }

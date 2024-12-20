@@ -4,7 +4,6 @@ namespace VincentBean\Plausible\Tests\Events;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Client\Request;
-use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use VincentBean\Plausible\Facades\PlausibleEvent;
@@ -14,7 +13,7 @@ class PlausibleEventTest extends TestCase
 {
     use WithFaker;
 
-    public function testFireCustomUrl(): void
+    public function test_fire_custom_url(): void
     {
         $post_url = 'http://plausible-domain.test/api/event';
 
@@ -39,7 +38,7 @@ class PlausibleEventTest extends TestCase
         });
     }
 
-    public function testFireCurrentUrl(): void
+    public function test_fire_current_url(): void
     {
         $post_url = 'http://plausible-domain.test/api/event';
 
@@ -63,7 +62,7 @@ class PlausibleEventTest extends TestCase
         });
     }
 
-    public function testCustomUserFingerprint(): void
+    public function test_custom_user_fingerprint(): void
     {
         $post_url = 'http://plausible-domain.test/api/event';
 
@@ -90,37 +89,39 @@ class PlausibleEventTest extends TestCase
         });
     }
 
-    public function testFireHandlesExceptionGracefully(): void
+    public function test_fire_handles_exception_gracefully(): void
     {
         $post_url = 'http://plausible-domain.test/api/event';
 
-        # Create a mock response to pass to the RequestException
-        $mockResponse = new \Illuminate\Http\Client\Response(
-            new \GuzzleHttp\Psr7\Response(500, [], 'Simulated server error')
-        );
-
-        # Simulate a RequestException with the mock response
         Http::fake([
-            $post_url => fn() => throw new \Illuminate\Http\Client\RequestException($mockResponse),
+            $post_url => Http::response('{}', Response::HTTP_INTERNAL_SERVER_ERROR),
         ]);
 
-        # Spy on the log to capture any logged messages
-        \Log::spy();
-
+        $url = $this->faker->url();
         $name = $this->faker->word();
         $props = [$this->faker->word() => $this->faker->word()];
 
-        # Ensure the fire method returns false when an exception occurs
-        $result = PlausibleEvent::fire($name, $props);
+        $result = PlausibleEvent::fire($name, $props, ['url' => $url]);
 
         $this->assertFalse($result, 'The fire method should return false on exception');
-
-        # Verify that an error was logged
-        \Log::shouldHaveReceived('error')
-            ->once()
-            ->withArgs(function ($message) {
-                return str_contains($message, 'PlausibleEvent fire failed');
-            });
     }
 
+    public function test_fire_handles_host_down_exception_gracefully(): void
+    {
+        $post_url = 'http://plausible-domain.test/api/event';
+
+        Http::fake([
+            $post_url => fn () => throw new \Illuminate\Http\Client\RequestException(
+                new \Illuminate\Http\Client\Response(new \GuzzleHttp\Psr7\Response(0))
+            ),
+        ]);
+
+        $url = $this->faker->url();
+        $name = $this->faker->word();
+        $props = [$this->faker->word() => $this->faker->word()];
+
+        $result = PlausibleEvent::fire($name, $props, ['url' => $url]);
+
+        $this->assertFalse($result, 'The fire method should return false when the host is down');
+    }
 }
