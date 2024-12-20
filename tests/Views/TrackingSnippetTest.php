@@ -10,7 +10,7 @@ class TrackingSnippetTest extends TestCase
 {
     use InteractsWithViews;
 
-    public function testRenderSnippet(): void
+    public function test_render_snippet(): void
     {
         $tracking_domain = config('plausible.tracking_domain');
         $domain = config('plausible.plausible_domain');
@@ -20,7 +20,7 @@ class TrackingSnippetTest extends TestCase
             ->assertSee('<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>', false);
     }
 
-    public function testRenderComponent(): void
+    public function test_render_component(): void
     {
         $tracking_domain = config('plausible.tracking_domain');
         $domain = config('plausible.plausible_domain');
