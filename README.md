@@ -48,6 +48,19 @@ plausible('event')
 ### Server Side Tracking
 Track pageviews server side using middleware.
 
+Laravel 11:
+```php
+// bootstrap/app.php
+    return Application::configure(basePath: dirname(__DIR__))
+        // ...
+        ->withMiddleware(function (Middleware $middleware) {
+            // Append this middleware to track globally
+            $middleware->web(append: [\VincentBean\Plausible\Middleware\TrackPlausiblePageviews::class]);
+        })
+        // ...
+```
+
+Laravel 10 and earlier versions:
 ```php
 // app/Http/Kernel.php
     'web' => [
