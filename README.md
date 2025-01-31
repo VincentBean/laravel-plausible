@@ -55,7 +55,7 @@ Laravel 11:
         // ...
         ->withMiddleware(function (Middleware $middleware) {
             // Append this middleware to track globally
-            $middleware->append(\VincentBean\Plausible\Middleware\TrackPlausiblePageviews::class);
+            $middleware->web(append: [\VincentBean\Plausible\Middleware\TrackPlausiblePageviews::class]);
         })
         // ...
 ```
