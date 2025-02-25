@@ -1,6 +1,17 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.2.0...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.3.0...main)
+## [2.3.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.3.0) - 2025-02-25
+
+### What's Changed
+* Add documentation for server side tracking via middleware in Laravel 11 by @jorisdrenth in https://github.com/VincentBean/laravel-plausible/pull/23
+* Support Laravel 12 by @VincentBean in https://github.com/VincentBean/laravel-plausible/pull/26
+
+### New Contributors
+* @jorisdrenth made their first contribution in https://github.com/VincentBean/laravel-plausible/pull/23
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.2.0...2.3.0
+
 ## [2.2.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.2.0) - 2024-12-20
 
 ### What's Changed
