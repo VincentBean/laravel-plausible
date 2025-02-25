@@ -37,7 +37,10 @@ class Tracking extends Component
 
     public function render(): View
     {
-        return view('plausible::components.tracking', [
+        /** @var view-string $view */
+        $view = 'plausible::components.tracking';
+
+        return view($view, [
             'trackingDomain' => $this->trackingDomain,
             'plausibleDomain' => $this->plausibleDomain,
             'extensions' => $this->extensions,
