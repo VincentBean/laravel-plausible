@@ -22,7 +22,7 @@ class PlausibleEvent
                     array_merge($args, [
                         'name' => $name,
                         'domain' => config('plausible.tracking_domain'),
-                        'url' => $args['url'] ?? url()->current(),
+                        'url' => $args['url'] ?? url()->full(),
                         'referrer' => Arr::get($headers, 'Referrer', request()->header('Referer')),
                         'props' => json_encode($props),
                     ])
