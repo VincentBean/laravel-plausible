@@ -25,7 +25,7 @@ class Tracking extends Component
         }
 
         $this->src = implode('/', [
-            rtrim($this->plausibleDomain, '/'),
+            rtrim($this->plausibleDomain ?? '', '/'),
             'js',
             implode('.', [
                 'script',
