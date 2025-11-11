@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.3.0...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.3.1...main)
+## [2.3.1](https://github.com/VincentBean/laravel-plausible/releases/tag/2.3.1) - 2025-11-11
+
+### What's Changed
+* Use url()->full() to track UTM tags by @jorisdrenth in https://github.com/VincentBean/laravel-plausible/pull/27
+
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.3.0...2.3.1
+
 ## [2.3.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.3.0) - 2025-02-25
 
 ### What's Changed
