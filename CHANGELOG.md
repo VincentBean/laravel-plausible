@@ -1,6 +1,14 @@
 # Changelog 
 
-[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.3.1...main)
+[Unreleased changes](https://github.com/VincentBean/laravel-plausible/compare/2.4.0...main)
+## [2.4.0](https://github.com/VincentBean/laravel-plausible/releases/tag/2.4.0) - 2026-03-18
+
+### What's Changed
+* Support Laravel 13 by @VincentBean in https://github.com/VincentBean/laravel-plausible/pull/29
+
+
+**Full Changelog**: https://github.com/VincentBean/laravel-plausible/compare/2.3.1...2.4.0
+
 ## [2.3.1](https://github.com/VincentBean/laravel-plausible/releases/tag/2.3.1) - 2025-11-11
 
 ### What's Changed
