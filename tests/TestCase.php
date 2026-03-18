@@ -3,13 +3,14 @@
 namespace VincentBean\Plausible\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use VincentBean\Plausible\LaravelPlausibleServiceProvider;
 
 class TestCase extends BaseTestCase
 {
     protected function getPackageProviders($app): array
     {
         return [
-            \VincentBean\Plausible\LaravelPlausibleServiceProvider::class,
+            LaravelPlausibleServiceProvider::class,
         ];
     }
 
