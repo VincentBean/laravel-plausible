@@ -4,7 +4,7 @@ namespace VincentBean\Plausible;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use VincentBean\Plausible\Facades\PlausibleEvent;
+use VincentBean\Plausible\Events\PlausibleEvent;
 
 class LaravelPlausibleServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,7 @@ class LaravelPlausibleServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             PlausibleEvent::class,
-            Events\PlausibleEvent::class
+            PlausibleEvent::class
         );
 
         $this->mergeConfigFrom(
