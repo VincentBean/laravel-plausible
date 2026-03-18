@@ -4,6 +4,7 @@ namespace VincentBean\Plausible\Tests\Events;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Client\Request;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use VincentBean\Plausible\Facades\PlausibleEvent;
@@ -111,7 +112,7 @@ class PlausibleEventTest extends TestCase
         $post_url = 'http://plausible-domain.test/api/event';
 
         Http::fake([
-            $post_url => fn () => throw new \Illuminate\Http\Client\RequestException(
+            $post_url => fn () => throw new RequestException(
                 new \Illuminate\Http\Client\Response(new \GuzzleHttp\Psr7\Response(0))
             ),
         ]);
